@@ -256,7 +256,7 @@ aside{width:300px;flex-shrink:0;border-right:1px solid var(--border);background:
 <script>
 /* ─── CONFIG ───────────────────────────────────────────────────────────────── */
 const API = window.location.origin + '/api';
-const WS_URL = 'ws://localhost:3001/ws';
+const WS_URL = `${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}/ws`;
 
 /* ─── STATE ─────────────────────────────────────────────────────────────────── */
 let token       = localStorage.getItem('nc_token') || null;
