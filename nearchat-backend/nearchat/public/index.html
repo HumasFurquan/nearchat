@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <title>NearChat — Connect by Proximity</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=DM+Mono:wght@300;400&family=Instrument+Sans:wght@300;400;500&display=swap" rel="stylesheet">
@@ -17,22 +17,22 @@
   --online:#4fc98e; --error:#e07060; --radius:14px; --radius-sm:8px;
 }
 html,body{height:100%;overflow:hidden;}
-body{font-family:'Instrument Sans',sans-serif;background:var(--bg-void);color:var(--text-primary);display:flex;flex-direction:column;height:100vh;}
+body{font-family:'Instrument Sans',sans-serif;background:var(--bg-void);color:var(--text-primary);display:flex;flex-direction:column;height:100vh;height:100dvh;}
 
 /* ─── AUTH OVERLAY ─── */
-#authOverlay{position:fixed;inset:0;background:var(--bg-void);z-index:100;display:flex;align-items:center;justify-content:center;}
-.auth-box{width:380px;background:var(--bg-panel);border:1px solid var(--border-gold);border-radius:20px;padding:40px;animation:fadeIn 0.4s ease;}
-.auth-logo{font-family:'Cormorant Garamond',serif;font-size:28px;color:var(--gold);text-align:center;margin-bottom:6px;letter-spacing:0.08em;}
-.auth-sub{text-align:center;color:var(--text-dim);font-size:13px;margin-bottom:32px;font-family:'DM Mono',monospace;}
-.auth-tabs{display:flex;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:28px;}
+#authOverlay{position:fixed;inset:0;background:var(--bg-void);z-index:100;display:flex;align-items:center;justify-content:center;padding:16px;}
+.auth-box{width:100%;max-width:380px;background:var(--bg-panel);border:1px solid var(--border-gold);border-radius:20px;padding:32px 28px;animation:fadeIn 0.4s ease;}
+.auth-logo{font-family:'Cormorant Garamond',serif;font-size:26px;color:var(--gold);text-align:center;margin-bottom:6px;letter-spacing:0.08em;}
+.auth-sub{text-align:center;color:var(--text-dim);font-size:12px;margin-bottom:28px;font-family:'DM Mono',monospace;}
+.auth-tabs{display:flex;border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:24px;}
 .auth-tab{flex:1;padding:10px;background:transparent;border:none;color:var(--text-secondary);font-family:'Instrument Sans',sans-serif;font-size:13px;cursor:pointer;transition:all 0.2s;}
 .auth-tab.active{background:var(--gold);color:var(--bg-void);font-weight:500;}
-.auth-field{margin-bottom:16px;}
+.auth-field{margin-bottom:14px;}
 .auth-field label{display:block;font-size:11px;letter-spacing:0.1em;color:var(--text-dim);margin-bottom:6px;font-family:'DM Mono',monospace;}
 .auth-field input{width:100%;background:var(--bg-input);border:1px solid var(--border);border-radius:var(--radius-sm);padding:11px 14px;color:var(--text-primary);font-family:'Instrument Sans',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s;}
 .auth-field input:focus{border-color:var(--border-gold);}
 .auth-field input::placeholder{color:var(--text-dim);}
-.auth-geo{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--bg-input);border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:13px;color:var(--text-secondary);transition:all 0.2s;margin-bottom:16px;}
+.auth-geo{display:flex;align-items:center;gap:8px;padding:10px 14px;background:var(--bg-input);border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;font-size:13px;color:var(--text-secondary);transition:all 0.2s;margin-bottom:14px;}
 .auth-geo:hover{border-color:var(--border-gold);color:var(--text-primary);}
 .auth-geo.got{border-color:rgba(79,201,142,0.4);color:var(--online);}
 .auth-btn{width:100%;padding:13px;background:var(--gold);border:none;border-radius:var(--radius-sm);color:var(--bg-void);font-family:'Instrument Sans',sans-serif;font-size:14px;font-weight:500;cursor:pointer;transition:all 0.2s;margin-top:4px;}
@@ -41,41 +41,50 @@ body{font-family:'Instrument Sans',sans-serif;background:var(--bg-void);color:va
 .auth-error{color:var(--error);font-size:12px;font-family:'DM Mono',monospace;margin-top:8px;min-height:16px;}
 
 /* ─── HEADER ─── */
-header{display:flex;align-items:center;justify-content:space-between;padding:0 32px;height:64px;border-bottom:1px solid var(--border);background:var(--bg-panel);flex-shrink:0;position:relative;z-index:10;}
-.logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;letter-spacing:0.08em;color:var(--gold);display:flex;align-items:center;gap:10px;}
-.logo-dot{width:7px;height:7px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite;}
+header{display:flex;align-items:center;justify-content:space-between;padding:0 16px;height:56px;border-bottom:1px solid var(--border);background:var(--bg-panel);flex-shrink:0;position:relative;z-index:10;}
+.logo{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;letter-spacing:0.08em;color:var(--gold);display:flex;align-items:center;gap:8px;}
+.logo-dot{width:6px;height:6px;border-radius:50%;background:var(--gold);animation:pulse 2s infinite;}
 @keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
-.scope-selector{display:flex;align-items:center;background:var(--bg-card);border:1px solid var(--border);border-radius:40px;padding:4px;gap:2px;position:absolute;left:50%;transform:translateX(-50%);}
-.scope-btn{padding:7px 20px;border-radius:32px;border:none;background:transparent;color:var(--text-secondary);font-family:'Instrument Sans',sans-serif;font-size:13px;cursor:pointer;transition:all 0.25s ease;white-space:nowrap;letter-spacing:0.04em;}
+.header-right{display:flex;align-items:center;gap:10px;}
+.online-pill{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-secondary);font-family:'DM Mono',monospace;}
+.online-dot-hdr{width:6px;height:6px;border-radius:50%;background:var(--online);}
+.user-avatar-header{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:500;color:var(--bg-void);cursor:pointer;border:2px solid var(--border-gold);}
+.ws-status{width:7px;height:7px;border-radius:50%;background:var(--error);transition:background 0.3s;flex-shrink:0;}
+.ws-status.connected{background:var(--online);}
+
+/* ─── SCOPE BAR (below header on mobile) ─── */
+.scope-bar{display:flex;align-items:center;background:var(--bg-panel);border-bottom:1px solid var(--border);padding:8px 12px;gap:6px;flex-shrink:0;overflow-x:auto;}
+.scope-bar::-webkit-scrollbar{display:none;}
+.scope-btn{padding:6px 14px;border-radius:32px;border:none;background:var(--bg-card);color:var(--text-secondary);font-family:'Instrument Sans',sans-serif;font-size:12px;cursor:pointer;transition:all 0.25s ease;white-space:nowrap;letter-spacing:0.03em;flex-shrink:0;}
 .scope-btn:hover{color:var(--text-primary);}
 .scope-btn.active{color:var(--bg-void);font-weight:500;}
 .scope-btn[data-scope="area"].active{background:var(--accent-area);}
 .scope-btn[data-scope="city"].active{background:var(--accent-city);}
 .scope-btn[data-scope="state"].active{background:var(--accent-state);}
 .scope-btn[data-scope="world"].active{background:var(--gold);}
-.header-right{display:flex;align-items:center;gap:14px;}
-.online-pill{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text-secondary);font-family:'DM Mono',monospace;}
-.online-dot-hdr{width:6px;height:6px;border-radius:50%;background:var(--online);}
-.user-avatar-header{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:500;color:var(--bg-void);cursor:pointer;border:2px solid var(--border-gold);}
-.ws-status{width:8px;height:8px;border-radius:50%;background:var(--error);transition:background 0.3s;}
-.ws-status.connected{background:var(--online);}
 
 /* ─── LAYOUT ─── */
-main{display:flex;flex:1;overflow:hidden;}
-aside{width:300px;flex-shrink:0;border-right:1px solid var(--border);background:var(--bg-panel);display:flex;flex-direction:column;overflow:hidden;}
-.sidebar-header{padding:20px 20px 14px;border-bottom:1px solid var(--border);}
-.sidebar-title{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);margin-bottom:14px;}
+main{display:flex;flex:1;overflow:hidden;position:relative;}
+
+/* ─── SIDEBAR ─── */
+aside{
+  width:300px;flex-shrink:0;border-right:1px solid var(--border);
+  background:var(--bg-panel);display:flex;flex-direction:column;overflow:hidden;
+  transition:transform 0.3s cubic-bezier(0.22,1,0.36,1);
+}
+.sidebar-header{padding:16px 16px 12px;border-bottom:1px solid var(--border);}
+.sidebar-title{font-family:'Cormorant Garamond',serif;font-size:12px;font-weight:400;letter-spacing:0.12em;text-transform:uppercase;color:var(--text-dim);margin-bottom:12px;}
 .search-box{display:flex;align-items:center;background:var(--bg-input);border:1px solid var(--border);border-radius:var(--radius-sm);padding:0 12px;gap:8px;}
-.search-box input{flex:1;background:transparent;border:none;outline:none;color:var(--text-primary);font-family:'Instrument Sans',sans-serif;font-size:13px;padding:10px 0;}
+.search-box input{flex:1;background:transparent;border:none;outline:none;color:var(--text-primary);font-family:'Instrument Sans',sans-serif;font-size:13px;padding:9px 0;}
 .search-box input::placeholder{color:var(--text-dim);}
-.scope-label-bar{padding:12px 20px 8px;display:flex;align-items:center;justify-content:space-between;}
-.scope-label{font-size:11px;font-family:'DM Mono',monospace;letter-spacing:0.1em;color:var(--text-dim);display:flex;align-items:center;gap:6px;}
-.scope-dot{width:8px;height:8px;border-radius:50%;display:inline-block;}
-.people-count{font-size:11px;font-family:'DM Mono',monospace;color:var(--text-dim);}
-.user-list{flex:1;overflow-y:auto;padding:4px 10px 10px;}
+.scope-label-bar{padding:10px 16px 6px;display:flex;align-items:center;justify-content:space-between;}
+.scope-label{font-size:10px;font-family:'DM Mono',monospace;letter-spacing:0.1em;color:var(--text-dim);display:flex;align-items:center;gap:6px;}
+.scope-dot{width:7px;height:7px;border-radius:50%;display:inline-block;}
+.people-count{font-size:10px;font-family:'DM Mono',monospace;color:var(--text-dim);}
+.user-list{flex:1;overflow-y:auto;padding:4px 8px 8px;}
 .user-list::-webkit-scrollbar{width:3px;}
 .user-list::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
-.user-card{display:flex;align-items:center;gap:12px;padding:11px 12px;border-radius:var(--radius-sm);cursor:pointer;transition:background 0.18s ease;position:relative;margin-bottom:2px;}
+.user-card{display:flex;align-items:center;gap:10px;padding:10px;border-radius:var(--radius-sm);cursor:pointer;transition:background 0.18s ease;position:relative;margin-bottom:2px;}
 .user-card:hover{background:var(--bg-card);}
 .user-card.active{background:var(--bg-input);}
 .user-card.active::before{content:'';position:absolute;left:0;top:20%;bottom:20%;width:3px;border-radius:2px;background:var(--gold);}
@@ -93,61 +102,63 @@ aside{width:300px;flex-shrink:0;border-right:1px solid var(--border);background:
 .unread-badge{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 4px;border-radius:9px;background:var(--gold);color:var(--bg-void);font-size:10px;font-weight:600;margin-top:4px;}
 .loading-list{padding:20px;text-align:center;color:var(--text-dim);font-size:12px;font-family:'DM Mono',monospace;}
 
-/* ─── CHAT ─── */
-.chat-area{flex:1;display:flex;flex-direction:column;overflow:hidden;background:var(--bg-void);position:relative;}
+/* ─── CHAT AREA ─── */
+.chat-area{flex:1;display:flex;flex-direction:column;overflow:hidden;background:var(--bg-void);position:relative;min-width:0;}
 .chat-area::before{content:'';position:absolute;top:-100px;right:-100px;width:400px;height:400px;border-radius:50%;background:radial-gradient(ellipse,rgba(196,160,96,0.04) 0%,transparent 70%);pointer-events:none;}
-.chat-topbar{padding:16px 28px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;}
-.chat-user-info{display:flex;align-items:center;gap:14px;}
-.chat-avatar{width:42px;height:42px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:500;color:var(--bg-void);}
-.chat-name{font-family:'Cormorant Garamond',serif;font-size:20px;font-weight:500;color:var(--text-primary);}
-.chat-status{font-size:12px;font-family:'DM Mono',monospace;display:flex;align-items:center;gap:5px;}
-.chat-actions{display:flex;gap:10px;}
-.action-btn{width:36px;height:36px;border-radius:50%;background:var(--bg-card);border:1px solid var(--border);color:var(--text-secondary);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:all 0.2s;}
+.chat-topbar{padding:12px 16px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;flex-shrink:0;gap:8px;}
+.chat-user-info{display:flex;align-items:center;gap:10px;min-width:0;}
+.chat-avatar{width:38px;height:38px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:15px;font-weight:500;color:var(--bg-void);}
+.chat-name{font-family:'Cormorant Garamond',serif;font-size:18px;font-weight:500;color:var(--text-primary);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.chat-status{font-size:11px;font-family:'DM Mono',monospace;display:flex;align-items:center;gap:5px;white-space:nowrap;}
+.chat-topbar-right{display:flex;align-items:center;gap:8px;flex-shrink:0;}
+.chat-actions{display:flex;gap:6px;}
+.action-btn{width:32px;height:32px;border-radius:50%;background:var(--bg-card);border:1px solid var(--border);color:var(--text-secondary);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:14px;transition:all 0.2s;}
 .action-btn:hover{border-color:var(--border-gold);color:var(--gold);}
-.proximity-badge{display:flex;align-items:center;gap:6px;padding:4px 12px;border-radius:20px;border:1px solid;font-size:11px;font-family:'DM Mono',monospace;letter-spacing:0.06em;}
+/* Back button — mobile only */
+.back-btn{width:32px;height:32px;border-radius:50%;background:var(--bg-card);border:1px solid var(--border);color:var(--text-secondary);cursor:pointer;display:none;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.proximity-badge{display:flex;align-items:center;gap:6px;padding:3px 10px;border-radius:20px;border:1px solid;font-size:10px;font-family:'DM Mono',monospace;letter-spacing:0.04em;white-space:nowrap;}
 .proximity-badge[data-scope="area"]{border-color:var(--accent-area);color:var(--accent-area);background:rgba(96,168,196,0.06);}
 .proximity-badge[data-scope="city"]{border-color:var(--accent-city);color:var(--accent-city);background:rgba(123,156,240,0.06);}
 .proximity-badge[data-scope="state"]{border-color:var(--accent-state);color:var(--accent-state);background:rgba(168,123,220,0.06);}
 .proximity-badge[data-scope="world"]{border-color:var(--gold);color:var(--gold);background:var(--gold-dim);}
-.messages{flex:1;overflow-y:auto;padding:28px 32px;display:flex;flex-direction:column;gap:4px;}
+.messages{flex:1;overflow-y:auto;padding:20px 16px;display:flex;flex-direction:column;gap:4px;}
 .messages::-webkit-scrollbar{width:3px;}
 .messages::-webkit-scrollbar-thumb{background:var(--border);border-radius:2px;}
 .date-divider{display:flex;align-items:center;gap:16px;margin:16px 0 10px;}
 .date-divider::before,.date-divider::after{content:'';flex:1;height:1px;background:var(--border);}
 .date-divider span{font-size:10px;color:var(--text-dim);font-family:'DM Mono',monospace;letter-spacing:0.1em;white-space:nowrap;}
-.msg-row{display:flex;align-items:flex-end;gap:10px;}
+.msg-row{display:flex;align-items:flex-end;gap:8px;}
 .msg-row.sent{flex-direction:row-reverse;}
-.msg-avatar-sm{width:28px;height:28px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:11px;color:var(--bg-void);}
+.msg-avatar-sm{width:26px;height:26px;border-radius:50%;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-family:'Cormorant Garamond',serif;font-size:10px;color:var(--bg-void);}
 .msg-avatar-sm.hidden{visibility:hidden;}
-.bubble{max-width:60%;padding:11px 16px;border-radius:18px;font-size:14px;line-height:1.5;color:var(--text-primary);word-break:normal;overflow-wrap:break-word;white-space:pre-wrap;}
+.bubble{max-width:75%;padding:10px 14px;border-radius:18px;font-size:14px;line-height:1.5;color:var(--text-primary);word-break:normal;overflow-wrap:break-word;white-space:pre-wrap;}
 .bubble.received{background:var(--bg-card);border:1px solid var(--border);border-bottom-left-radius:5px;}
 .bubble.sent{background:var(--gold);color:var(--bg-void);border-bottom-right-radius:5px;}
 .msg-time-inline{font-size:10px;color:var(--text-dim);font-family:'DM Mono',monospace;margin-top:2px;padding:0 4px;}
-.msg-row.sent .msg-time-inline{text-align:right;color:rgba(8,8,16,0.45);}
-.msg-row.sent .bubble ~ .msg-time-inline{color:var(--text-dim);}
+.msg-row.sent .msg-time-inline{text-align:right;}
 .typing-row{display:flex;align-items:center;gap:10px;padding:4px 0 8px;}
 .typing-dots{display:flex;gap:4px;}
 .typing-dot{width:6px;height:6px;border-radius:50%;background:var(--text-dim);animation:typingBounce 1.2s infinite;}
 .typing-dot:nth-child(2){animation-delay:0.2s;}
 .typing-dot:nth-child(3){animation-delay:0.4s;}
 @keyframes typingBounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
-.input-bar{padding:16px 28px 20px;flex-shrink:0;border-top:1px solid var(--border);}
-.input-wrap{display:flex;align-items:flex-end;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:6px 8px 6px 16px;gap:8px;transition:border-color 0.2s;min-width:0;overflow:hidden;}
+.input-bar{padding:10px 12px 12px;flex-shrink:0;border-top:1px solid var(--border);}
+.input-wrap{display:flex;align-items:flex-end;background:var(--bg-card);border:1px solid var(--border);border-radius:16px;padding:6px 8px 6px 14px;gap:8px;transition:border-color 0.2s;min-width:0;overflow:hidden;}
 .input-wrap:focus-within{border-color:var(--border-gold);}
-.msg-input{flex:1;min-width:0;width:100%;background:transparent;border:none;outline:none;color:var(--text-primary);font-family:'Instrument Sans',sans-serif;font-size:14px;line-height:1.5;resize:none;max-height:120px;overflow-y:auto;padding:8px 0;}
+.msg-input{flex:none;width:100%;background:transparent;border:none;outline:none;color:var(--text-primary);font-family:'Instrument Sans',sans-serif;font-size:15px;line-height:1.5;resize:none;max-height:120px;overflow-y:auto;padding:6px 0;}
 .msg-input::placeholder{color:var(--text-dim);}
-.input-btns{display:flex;align-items:flex-end;gap:4px;padding-bottom:4px;}
+.input-btns{display:flex;align-items:flex-end;gap:4px;padding-bottom:2px;}
 .input-icon-btn{width:34px;height:34px;border-radius:10px;background:transparent;border:none;color:var(--text-dim);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:color 0.2s;}
 .input-icon-btn:hover{color:var(--text-secondary);}
-.send-btn{width:38px;height:38px;border-radius:12px;background:var(--gold);border:none;color:var(--bg-void);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;transition:all 0.2s;flex-shrink:0;}
-.send-btn:hover{background:var(--gold-light);transform:scale(1.05);}
-.send-btn:active{transform:scale(0.97);}
-.no-chat{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;padding:40px;}
-.no-chat-glyph{font-size:56px;opacity:0.12;}
-.no-chat-title{font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--text-secondary);letter-spacing:0.04em;}
-.no-chat-sub{font-size:13px;color:var(--text-dim);text-align:center;max-width:360px;line-height:1.7;}
-.no-chat-scope-tips{display:flex;gap:10px;margin-top:10px;flex-wrap:wrap;justify-content:center;}
-.tip-pill{padding:6px 14px;border-radius:20px;font-size:12px;border:1px solid;font-family:'DM Mono',monospace;}
+.send-btn{width:36px;height:36px;border-radius:12px;background:var(--gold);border:none;color:var(--bg-void);cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:all 0.2s;flex-shrink:0;}
+.send-btn:hover{background:var(--gold-light);}
+.send-btn:active{transform:scale(0.95);}
+.no-chat{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;padding:32px 24px;}
+.no-chat-glyph{font-size:48px;opacity:0.12;}
+.no-chat-title{font-family:'Cormorant Garamond',serif;font-size:24px;font-weight:300;color:var(--text-secondary);letter-spacing:0.04em;text-align:center;}
+.no-chat-sub{font-size:13px;color:var(--text-dim);text-align:center;max-width:320px;line-height:1.7;}
+.no-chat-scope-tips{display:flex;gap:8px;margin-top:8px;flex-wrap:wrap;justify-content:center;}
+.tip-pill{padding:5px 12px;border-radius:20px;font-size:11px;border:1px solid;font-family:'DM Mono',monospace;}
 
 /* Animations */
 .fade-in{animation:fadeIn 0.25s ease both;}
@@ -156,6 +167,80 @@ aside{width:300px;flex-shrink:0;border-right:1px solid var(--border);background:
 @keyframes slideUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
 .msg-appear{animation:msgAppear 0.2s cubic-bezier(0.22,1,0.36,1) both;}
 @keyframes msgAppear{from{opacity:0;transform:scale(0.96) translateY(6px)}to{opacity:1;transform:scale(1) translateY(0)}}
+
+/* ═══════════════════════════════════════════════════════════
+   MOBILE RESPONSIVE  (≤ 680px)
+   On mobile: sidebar takes full width, chat takes full width.
+   Only one is visible at a time. Back button returns to sidebar.
+   ═══════════════════════════════════════════════════════════ */
+@media (max-width: 680px) {
+  /* Header: hide online pill text to save space */
+  .online-pill span { display: none; }
+
+  /* Main becomes a relative container */
+  main { position: relative; overflow: hidden; }
+
+  /* Sidebar: full width, positioned absolutely */
+  aside {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    z-index: 2;
+    transform: translateX(0);
+    border-right: none;
+  }
+
+  /* When chat is open, slide sidebar out to the left */
+  aside.hidden-mobile {
+    transform: translateX(-100%);
+    pointer-events: none;
+  }
+
+  /* Chat area: full width, positioned absolutely */
+  .chat-area {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    z-index: 1;
+    transform: translateX(100%);
+    transition: transform 0.3s cubic-bezier(0.22,1,0.36,1);
+  }
+
+  /* When chat is open, slide it in */
+  .chat-area.visible-mobile {
+    transform: translateX(0);
+    z-index: 3;
+  }
+
+  /* Show back button on mobile */
+  .back-btn { display: flex; }
+
+  /* Hide desktop proximity badge to save space */
+  .proximity-badge { display: none; }
+
+  /* Bigger bubbles max-width on mobile */
+  .bubble { max-width: 85%; }
+
+  /* Input bar safe area padding for iPhone home bar */
+  .input-bar { padding-bottom: max(12px, env(safe-area-inset-bottom)); }
+}
+
+/* ═══════════════════════════════════════════════
+   TABLET  (681px – 900px): sidebar narrower
+   ═══════════════════════════════════════════════ */
+@media (min-width: 681px) and (max-width: 900px) {
+  aside { width: 240px; }
+  .scope-btn { padding: 6px 12px; font-size: 12px; }
+  .bubble { max-width: 70%; }
+  .messages { padding: 20px 20px; }
+  .chat-topbar { padding: 12px 20px; }
+  .input-bar { padding: 12px 20px 16px; }
+}
+
+/* Desktop: hide scope-bar, show nothing extra */
+@media (min-width: 681px) {
+  aside { transition: none; }
+}
 </style>
 </head>
 <body>
@@ -165,33 +250,27 @@ aside{width:300px;flex-shrink:0;border-right:1px solid var(--border);background:
   <div class="auth-box">
     <div class="auth-logo">◈ NearChat</div>
     <div class="auth-sub">proximity-based real-time chat</div>
-
     <div class="auth-tabs">
       <button class="auth-tab active" id="tabLogin"    onclick="showTab('login')">Sign In</button>
       <button class="auth-tab"        id="tabRegister" onclick="showTab('register')">Create Account</button>
     </div>
-
-    <!-- Login -->
     <div id="loginForm">
-      <div class="auth-field"><label>USERNAME</label><input type="text" id="loginUser" placeholder="your_username"></div>
-      <div class="auth-field"><label>PASSWORD</label><input type="password" id="loginPass" placeholder="••••••••"></div>
+      <div class="auth-field"><label>USERNAME</label><input type="text" id="loginUser" placeholder="your_username" autocomplete="username"></div>
+      <div class="auth-field"><label>PASSWORD</label><input type="password" id="loginPass" placeholder="••••••••" autocomplete="current-password"></div>
       <button class="auth-btn" onclick="doLogin()">Sign In</button>
     </div>
-
-    <!-- Register -->
     <div id="registerForm" style="display:none">
       <div class="auth-field"><label>DISPLAY NAME</label><input type="text" id="regName" placeholder="Your Name"></div>
-      <div class="auth-field"><label>USERNAME</label><input type="text" id="regUser" placeholder="username (3–30 chars)"></div>
-      <div class="auth-field"><label>PASSWORD</label><input type="password" id="regPass" placeholder="min 6 characters"></div>
+      <div class="auth-field"><label>USERNAME</label><input type="text" id="regUser" placeholder="username (3–30 chars)" autocomplete="username"></div>
+      <div class="auth-field"><label>PASSWORD</label><input type="password" id="regPass" placeholder="min 6 characters" autocomplete="new-password"></div>
       <div class="auth-geo" id="geoBtn" onclick="requestGeolocation()">
         <span>📍</span><span id="geoLabel">Use my current location</span>
       </div>
       <button class="auth-btn" onclick="doRegister()">Create Account</button>
     </div>
-
     <div class="auth-error" id="authError"></div>
-    <div style="margin-top:16px;font-size:11px;color:var(--text-dim);text-align:center;font-family:'DM Mono',monospace;">
-      Demo accounts: arjun / demo1234 &nbsp;|&nbsp; yuki / demo1234
+    <div style="margin-top:14px;font-size:11px;color:var(--text-dim);text-align:center;font-family:'DM Mono',monospace;">
+      Demo: arjun / demo1234 &nbsp;|&nbsp; yuki / demo1234
     </div>
   </div>
 </div>
@@ -199,14 +278,6 @@ aside{width:300px;flex-shrink:0;border-right:1px solid var(--border);background:
 <!-- ─── HEADER ─── -->
 <header>
   <div class="logo"><div class="logo-dot"></div>NearChat</div>
-
-  <div class="scope-selector">
-    <button class="scope-btn active" data-scope="area"  onclick="setScope('area')">📍 Area</button>
-    <button class="scope-btn"        data-scope="city"  onclick="setScope('city')">🏙 City</button>
-    <button class="scope-btn"        data-scope="state" onclick="setScope('state')">🗺 State</button>
-    <button class="scope-btn"        data-scope="world" onclick="setScope('world')">🌐 World</button>
-  </div>
-
   <div class="header-right">
     <div class="ws-status" id="wsStatus" title="WebSocket"></div>
     <div class="online-pill">
@@ -217,8 +288,17 @@ aside{width:300px;flex-shrink:0;border-right:1px solid var(--border);background:
   </div>
 </header>
 
+<!-- ─── SCOPE BAR ─── -->
+<div class="scope-bar">
+  <button class="scope-btn active" data-scope="area"  onclick="setScope('area')">📍 Area</button>
+  <button class="scope-btn"        data-scope="city"  onclick="setScope('city')">🏙 City</button>
+  <button class="scope-btn"        data-scope="state" onclick="setScope('state')">🗺 State</button>
+  <button class="scope-btn"        data-scope="world" onclick="setScope('world')">🌐 World</button>
+</div>
+
+<!-- ─── MAIN ─── -->
 <main>
-  <aside>
+  <aside id="sidebar">
     <div class="sidebar-header">
       <div class="sidebar-title">People Nearby</div>
       <div class="search-box">
@@ -242,39 +322,54 @@ aside{width:300px;flex-shrink:0;border-right:1px solid var(--border);background:
     <div class="no-chat">
       <div class="no-chat-glyph">💬</div>
       <div class="no-chat-title">Connect with your world</div>
-      <div class="no-chat-sub">Sign in, then select someone nearby to start chatting. Expand your reach by switching between Area, City, State, or World.</div>
+      <div class="no-chat-sub">Select someone nearby to start chatting. Switch scopes to expand your reach.</div>
       <div class="no-chat-scope-tips">
-        <span class="tip-pill" style="border-color:var(--accent-area);color:var(--accent-area)">📍 Area — 2km</span>
-        <span class="tip-pill" style="border-color:var(--accent-city);color:var(--accent-city)">🏙 City — 50km</span>
-        <span class="tip-pill" style="border-color:var(--accent-state);color:var(--accent-state)">🗺 State — 500km</span>
-        <span class="tip-pill" style="border-color:var(--gold);color:var(--gold)">🌐 World — everyone</span>
+        <span class="tip-pill" style="border-color:var(--accent-area);color:var(--accent-area)">📍 Area</span>
+        <span class="tip-pill" style="border-color:var(--accent-city);color:var(--accent-city)">🏙 City</span>
+        <span class="tip-pill" style="border-color:var(--accent-state);color:var(--accent-state)">🗺 State</span>
+        <span class="tip-pill" style="border-color:var(--gold);color:var(--gold)">🌐 World</span>
       </div>
     </div>
   </div>
 </main>
 
 <script>
-/* ─── CONFIG ───────────────────────────────────────────────────────────────── */
-const API = window.location.origin + '/api';
-const WS_URL = `${location.protocol === 'https:' ? 'wss' : 'ws'}://${location.host}/ws`;
+/* ─── CONFIG ─── */
+const API    = window.location.origin + '/api';
+const WS_URL = `${location.protocol==='https:'?'wss':'ws'}://${location.host}/ws`;
 
-/* ─── STATE ─────────────────────────────────────────────────────────────────── */
-let token       = localStorage.getItem('nc_token') || null;
-let myUser      = null;
-let ws          = null;
-let wsReady     = false;
+/* ─── STATE ─── */
+let token        = localStorage.getItem('nc_token') || null;
+let myUser       = null;
+let ws           = null;
+let wsReady      = false;
 let currentScope = 'area';
 let activeUserId = null;
-let nearbyUsers  = [];       // current list from API
-let conversations = {};      // { userId: [messages] }
+let nearbyUsers  = [];
+let conversations = {};
 let typingTimers  = {};
-let geoCoords     = null;    // { lat, lon } from browser geolocation
+let geoCoords     = null;
 
 const SCOPE_COLORS = { area:'#60a8c4', city:'#7b9cf0', state:'#a87bdc', world:'#c4a060' };
 const SCOPE_LABELS = { area:'YOUR AREA', city:'YOUR CITY', state:'YOUR STATE', world:'WORLDWIDE' };
 const SCOPE_ICONS  = { area:'📍 Same Area', city:'🏙 Same City', state:'🗺 Same State', world:'🌐 Global' };
 
-/* ─── AUTH FLOW ─────────────────────────────────────────────────────────────── */
+/* ─── MOBILE NAV ─── */
+function isMobile() { return window.innerWidth <= 680; }
+
+function showChatMobile() {
+  if (!isMobile()) return;
+  document.getElementById('sidebar').classList.add('hidden-mobile');
+  document.getElementById('chatArea').classList.add('visible-mobile');
+}
+
+function showSidebarMobile() {
+  document.getElementById('sidebar').classList.remove('hidden-mobile');
+  document.getElementById('chatArea').classList.remove('visible-mobile');
+  activeUserId = null;
+}
+
+/* ─── AUTH ─── */
 function showTab(tab) {
   document.getElementById('loginForm').style.display    = tab==='login'    ? '' : 'none';
   document.getElementById('registerForm').style.display = tab==='register' ? '' : 'none';
@@ -284,20 +379,15 @@ function showTab(tab) {
 }
 
 function requestGeolocation() {
-  if (!navigator.geolocation) {
-    document.getElementById('geoLabel').textContent = 'Geolocation not supported';
-    return;
-  }
-  document.getElementById('geoLabel').textContent = 'Requesting location…';
+  if (!navigator.geolocation) { document.getElementById('geoLabel').textContent = 'Not supported'; return; }
+  document.getElementById('geoLabel').textContent = 'Requesting…';
   navigator.geolocation.getCurrentPosition(
     pos => {
       geoCoords = { lat: pos.coords.latitude, lon: pos.coords.longitude };
       document.getElementById('geoBtn').classList.add('got');
       document.getElementById('geoLabel').textContent = `Got it! (${geoCoords.lat.toFixed(3)}, ${geoCoords.lon.toFixed(3)})`;
     },
-    () => {
-      document.getElementById('geoLabel').textContent = 'Location denied — you can set it later';
-    }
+    () => { document.getElementById('geoLabel').textContent = 'Denied — set later'; }
   );
 }
 
@@ -306,77 +396,60 @@ async function doLogin() {
   const password = document.getElementById('loginPass').value;
   setAuthError('');
   if (!username || !password) return setAuthError('Please fill all fields');
-
   try {
     const r = await apiFetch('/auth/login', 'POST', { username, password }, false);
     onAuthSuccess(r.token, r.user);
-  } catch (e) {
-    setAuthError(e.message);
-  }
+  } catch (e) { setAuthError(e.message); }
 }
 
 async function doRegister() {
-  const displayName   = document.getElementById('regName').value.trim();
-  const username      = document.getElementById('regUser').value.trim();
-  const password      = document.getElementById('regPass').value;
+  const displayName = document.getElementById('regName').value.trim();
+  const username    = document.getElementById('regUser').value.trim();
+  const password    = document.getElementById('regPass').value;
   setAuthError('');
   if (!displayName || !username || !password) return setAuthError('Please fill all fields');
-
   const body = { displayName, username, password };
   if (geoCoords) { body.lat = geoCoords.lat; body.lon = geoCoords.lon; }
-
-  // Reverse-geocode label from OpenStreetMap Nominatim (free, no key)
   if (geoCoords) {
     try {
-      const g = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${geoCoords.lat}&lon=${geoCoords.lon}`);
+      const g  = await fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${geoCoords.lat}&lon=${geoCoords.lon}`);
       const gj = await g.json();
       body.locationLabel = gj.address?.suburb || gj.address?.city_district || gj.address?.city || 'Your location';
     } catch { body.locationLabel = 'Your location'; }
   }
-
   try {
     const r = await apiFetch('/auth/register', 'POST', body, false);
     onAuthSuccess(r.token, r.user);
-  } catch (e) {
-    setAuthError(e.message);
-  }
+  } catch (e) { setAuthError(e.message); }
 }
 
 function onAuthSuccess(tok, user) {
-  token  = tok;
-  myUser = user;
+  token = tok; myUser = user;
   localStorage.setItem('nc_token', tok);
   document.getElementById('authOverlay').style.display = 'none';
   initApp();
 }
 
-function setAuthError(msg) {
-  document.getElementById('authError').textContent = msg;
-}
+function setAuthError(msg) { document.getElementById('authError').textContent = msg; }
 
-/* ─── APP INIT ──────────────────────────────────────────────────────────────── */
+/* ─── APP INIT ─── */
 async function initApp() {
-  // Try to restore session from stored token
   if (token && !myUser) {
     try {
       const r = await apiFetch('/auth/me', 'GET', null, true);
       myUser = r.user;
       document.getElementById('authOverlay').style.display = 'none';
     } catch {
-      token = null;
-      localStorage.removeItem('nc_token');
-      return; // stay on auth screen
+      token = null; localStorage.removeItem('nc_token'); return;
     }
   }
   if (!myUser) return;
 
-  // Update header avatar
   const initials = myUser.displayName.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2);
   const av = document.getElementById('myAvatar');
   av.textContent = initials;
   av.style.background = myUser.avatarColor || 'var(--gold)';
 
-  // Push real geolocation to server if we have it
   if (geoCoords) await pushLocation(geoCoords.lat, geoCoords.lon);
   else if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(async pos => {
@@ -386,19 +459,14 @@ async function initApp() {
     });
   }
 
-  // Connect WebSocket
   connectWebSocket();
-
-  // Load user list
   setScope('area');
 
-  // Re-request location every 2 minutes for live updates
   setInterval(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(async pos => {
         geoCoords = { lat: pos.coords.latitude, lon: pos.coords.longitude };
         await pushLocation(geoCoords.lat, geoCoords.lon);
-        // Broadcast to WS
         if (wsReady) wsSend('UPDATE_LOCATION', geoCoords);
       });
     }
@@ -406,88 +474,62 @@ async function initApp() {
 }
 
 async function pushLocation(lat, lon) {
-  try {
-    await apiFetch('/auth/location', 'PUT', { lat, lon });
-  } catch(e) { console.warn('location update failed', e.message); }
+  try { await apiFetch('/auth/location', 'PUT', { lat, lon }); }
+  catch(e) { console.warn('location update failed', e.message); }
 }
 
-/* ─── WEBSOCKET ─────────────────────────────────────────────────────────────── */
+/* ─── WEBSOCKET ─── */
 function connectWebSocket() {
   if (ws) ws.close();
   ws = new WebSocket(WS_URL);
   const statusEl = document.getElementById('wsStatus');
 
-  ws.onopen = () => {
-    wsSend('AUTH', { token });
-  };
+  ws.onopen = () => wsSend('AUTH', { token });
 
   ws.onmessage = ({ data }) => {
-    let env;
-    try { env = JSON.parse(data); } catch { return; }
+    let env; try { env = JSON.parse(data); } catch { return; }
     const { type, payload } = env;
-
-    if (type === 'AUTH_OK') {
-      wsReady = true;
-      statusEl.classList.add('connected');
-      console.log('[ws] connected as', payload.user.displayName);
-    }
-    else if (type === 'AUTH_ERROR') {
-      console.error('[ws] auth error', payload.error);
-      token = null; localStorage.removeItem('nc_token');
-    }
-    else if (type === 'NEW_MESSAGE') {
-      onIncomingMessage(payload);
-    }
-    else if (type === 'TYPING_START') {
-      showTyping(payload.fromId, payload.displayName);
-    }
-    else if (type === 'TYPING_STOP') {
-      hideTyping(payload.fromId);
-    }
-    else if (type === 'PRESENCE') {
-      onPresenceChange(payload.userId, payload.online);
-    }
+    if      (type === 'AUTH_OK')       { wsReady = true; statusEl.classList.add('connected'); }
+    else if (type === 'AUTH_ERROR')    { token = null; localStorage.removeItem('nc_token'); }
+    else if (type === 'NEW_MESSAGE')   { onIncomingMessage(payload); }
+    else if (type === 'TYPING_START')  { showTyping(payload.fromId, payload.displayName); }
+    else if (type === 'TYPING_STOP')   { hideTyping(payload.fromId); }
+    else if (type === 'PRESENCE')      { onPresenceChange(payload.userId, payload.online); }
     else if (type === 'LOCATION_UPDATE') {
-      // Refresh nearby list so distances stay live
-      loadNearby();
+      if (payload.userId !== myUser?.id) loadNearby();
     }
   };
 
   ws.onclose = () => {
     wsReady = false;
     statusEl.classList.remove('connected');
-    // Reconnect in 3s
     setTimeout(connectWebSocket, 3000);
   };
 
-  ws.onerror = (e) => { console.error('[ws] error', e); };
+  ws.onerror = (e) => console.error('[ws] error', e);
 }
 
 function wsSend(type, payload = {}) {
-  if (ws && ws.readyState === WebSocket.OPEN) {
-    ws.send(JSON.stringify({ type, payload }));
-  }
+  if (ws && ws.readyState === WebSocket.OPEN) ws.send(JSON.stringify({ type, payload }));
 }
 
-/* ─── NEARBY USERS ──────────────────────────────────────────────────────────── */
+/* ─── NEARBY ─── */
 async function loadNearby() {
   if (!token) return;
   try {
     const r = await apiFetch(`/users/nearby?scope=${currentScope}`);
     nearbyUsers = r.users;
-    document.getElementById('peopleCount').textContent = `${nearbyUsers.length} people`;
-    document.getElementById('onlineCount').textContent = `${nearbyUsers.filter(u=>u.online).length} online`;
+    document.getElementById('peopleCount').textContent  = `${nearbyUsers.length} people`;
+    document.getElementById('onlineCount').textContent  = `${nearbyUsers.filter(u=>u.online).length} online`;
     renderUserList(getFilteredUsers());
-  } catch(e) {
-    console.error('loadNearby failed:', e.message);
-  }
+  } catch(e) { console.error('loadNearby failed:', e.message); }
 }
 
 function getFilteredUsers() {
   const q = document.getElementById('searchInput').value.toLowerCase();
   if (!q) return nearbyUsers;
   return nearbyUsers.filter(u =>
-    u.displayName.toLowerCase().includes(q) || u.locationLabel.toLowerCase().includes(q)
+    u.displayName.toLowerCase().includes(q) || (u.locationLabel||'').toLowerCase().includes(q)
   );
 }
 
@@ -496,28 +538,22 @@ function filterUsers() { renderUserList(getFilteredUsers()); }
 function setScope(scope) {
   currentScope = scope;
   document.querySelectorAll('.scope-btn').forEach(b => b.classList.toggle('active', b.dataset.scope === scope));
-  document.getElementById('scopeDot').style.background = SCOPE_COLORS[scope];
+  document.getElementById('scopeDot').style.background  = SCOPE_COLORS[scope];
   document.getElementById('scopeLabelText').textContent = SCOPE_LABELS[scope];
   loadNearby();
 }
 
-/* ─── RENDER USER LIST ──────────────────────────────────────────────────────── */
+/* ─── RENDER USER LIST ─── */
 function renderUserList(users) {
   const list = document.getElementById('userList');
   list.innerHTML = '';
   document.getElementById('peopleCount').textContent = `${users.length} people`;
-
-  if (!users.length) {
-    list.innerHTML = `<div class="loading-list">No people in this scope yet</div>`;
-    return;
-  }
+  if (!users.length) { list.innerHTML = `<div class="loading-list">No people in this scope yet</div>`; return; }
 
   users.forEach((user, i) => {
     const isActive = activeUserId === user.id;
-    const msgs = conversations[user.id] || [];
-    const lastMsg = msgs[msgs.length - 1];
-    const preview = lastMsg ? lastMsg.text.substring(0, 34) + (lastMsg.text.length > 34 ? '…' : '') : 'Say hello 👋';
-
+    const msgs     = conversations[user.id] || [];
+    const lastMsg  = msgs[msgs.length - 1];
     const initials = user.displayName.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2);
 
     const card = document.createElement('div');
@@ -533,7 +569,7 @@ function renderUserList(users) {
       </div>
       <div class="user-info">
         <div class="user-name">${user.displayName}</div>
-        <div class="user-location">📍 ${user.distanceLabel} · ${user.locationLabel}</div>
+        <div class="user-location">📍 ${user.distanceLabel} · ${user.locationLabel||''}</div>
       </div>
       <div class="user-meta">
         <div class="msg-time-side">${lastMsg ? formatTime(lastMsg.createdAt) : ''}</div>
@@ -543,17 +579,15 @@ function renderUserList(users) {
   });
 }
 
-/* ─── OPEN CHAT ─────────────────────────────────────────────────────────────── */
+/* ─── OPEN CHAT ─── */
 async function openChat(userId) {
   activeUserId = userId;
   const user = nearbyUsers.find(u => u.id === userId);
   if (!user) return;
 
-  // Clear unread
   user.unreadCount = 0;
   renderUserList(getFilteredUsers());
 
-  // Load history from server
   if (!conversations[userId]) {
     try {
       const r = await apiFetch(`/users/${userId}/messages`);
@@ -562,20 +596,21 @@ async function openChat(userId) {
   }
 
   const initials = user.displayName.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2);
-
   const chatArea = document.getElementById('chatArea');
+
   chatArea.innerHTML = `
     <div class="chat-topbar slide-up">
+      <button class="back-btn" onclick="showSidebarMobile()" title="Back">←</button>
       <div class="chat-user-info">
         <div class="chat-avatar" style="background:${user.avatarColor}">${initials}</div>
-        <div>
+        <div style="min-width:0">
           <div class="chat-name">${user.displayName}</div>
           <div class="chat-status" id="chatStatus" style="color:${user.online ? 'var(--online)' : 'var(--text-dim)'}">
-            ${user.online ? '● Online now' : '○ Away · ' + user.distanceLabel + ' away'}
+            ${user.online ? '● Online' : '○ Away · ' + user.distanceLabel}
           </div>
         </div>
       </div>
-      <div style="display:flex;align-items:center;gap:12px">
+      <div class="chat-topbar-right">
         <div class="proximity-badge" data-scope="${user.scope || currentScope}">
           ${SCOPE_ICONS[user.scope || currentScope]} · ${user.distanceLabel}
         </div>
@@ -590,12 +625,11 @@ async function openChat(userId) {
     <div class="input-bar slide-up" style="animation-delay:0.1s">
       <div class="input-wrap">
         <div style="flex:1;min-width:0;overflow:hidden;">
-          <textarea class="msg-input" id="msgInput" placeholder="Type a message…" rows="1"
+          <textarea class="msg-input" id="msgInput" placeholder="Message ${user.displayName.split(' ')[0]}…" rows="1"
             onkeydown="handleKey(event)"
             oninput="autoResize(this); onTyping()"></textarea>
         </div>
         <div class="input-btns">
-          <button class="input-icon-btn">😊</button>
           <button class="send-btn" onclick="sendMessage()">➤</button>
         </div>
       </div>
@@ -603,42 +637,37 @@ async function openChat(userId) {
 
   renderMessages(userId);
   setTimeout(() => { document.getElementById('msgInput')?.focus(); scrollBottom(); }, 50);
-
-  // Mark messages as read
   wsSend('MARK_READ', { fromId: userId });
+
+  // On mobile: slide to chat
+  showChatMobile();
 }
 
-/* ─── MESSAGES ──────────────────────────────────────────────────────────────── */
+/* ─── MESSAGES ─── */
 function renderMessages(userId) {
   const container = document.getElementById('messagesContainer');
   if (!container) return;
   container.innerHTML = '<div class="date-divider"><span>Today</span></div>';
-
-  const msgs = conversations[userId] || [];
-  const user = nearbyUsers.find(u => u.id === userId);
+  const msgs    = conversations[userId] || [];
+  const user    = nearbyUsers.find(u => u.id === userId);
   const initials = user ? user.displayName.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2) : '?';
 
   msgs.forEach((msg, i) => {
-    const isSent = msg.fromId === myUser.id;
-    const showAv = !isSent && (i === msgs.length-1 || msgs[i+1]?.fromId !== msg.fromId);
-
-    const row = document.createElement('div');
+    const isSent  = msg.fromId === myUser.id;
+    const showAv  = !isSent && (i === msgs.length-1 || msgs[i+1]?.fromId !== msg.fromId);
+    const row     = document.createElement('div');
     row.className = `msg-row ${isSent ? 'sent' : ''} msg-appear`;
     row.style.animationDelay = `${Math.min(i,10) * 0.03}s`;
 
     if (!isSent) {
       row.innerHTML = `
         <div class="msg-avatar-sm ${showAv ? '' : 'hidden'}" style="background:${user?.avatarColor}">${initials}</div>
-        <div>
-          <div class="bubble received">${escHtml(msg.text)}</div>
-          <div class="msg-time-inline">${formatTime(msg.createdAt)}</div>
-        </div>`;
+        <div><div class="bubble received">${escHtml(msg.text)}</div>
+        <div class="msg-time-inline">${formatTime(msg.createdAt)}</div></div>`;
     } else {
       row.innerHTML = `
-        <div>
-          <div class="bubble sent">${escHtml(msg.text)}</div>
-          <div class="msg-time-inline">${formatTime(msg.createdAt)}</div>
-        </div>`;
+        <div><div class="bubble sent">${escHtml(msg.text)}</div>
+        <div class="msg-time-inline">${formatTime(msg.createdAt)}</div></div>`;
     }
     container.appendChild(row);
   });
@@ -646,51 +675,38 @@ function renderMessages(userId) {
 }
 
 function onIncomingMessage(msg) {
-  // Skip echo of our own messages — already shown optimistically
   if (msg.fromId === myUser.id) return;
-
-  const otherUserId = msg.fromId === myUser.id ? msg.toId : msg.fromId;
-
+  const otherUserId = msg.fromId;
   if (!conversations[otherUserId]) conversations[otherUserId] = [];
   conversations[otherUserId].push(msg);
 
   if (activeUserId === otherUserId) {
-    // We're in this chat — append directly
     const container = document.getElementById('messagesContainer');
     if (container) appendMessageBubble(container, msg, otherUserId);
     scrollBottom();
     wsSend('MARK_READ', { fromId: otherUserId });
   } else {
-    // Increment unread badge
     const user = nearbyUsers.find(u => u.id === otherUserId);
-    if (user) {
-      user.unreadCount = (user.unreadCount || 0) + 1;
-      renderUserList(getFilteredUsers());
-    }
+    if (user) { user.unreadCount = (user.unreadCount || 0) + 1; renderUserList(getFilteredUsers()); }
   }
 }
 
 function appendMessageBubble(container, msg, otherUserId) {
-  const isSent = msg.fromId === myUser.id;
-  const user   = nearbyUsers.find(u => u.id === otherUserId);
+  const isSent   = msg.fromId === myUser.id;
+  const user     = nearbyUsers.find(u => u.id === otherUserId);
   const initials = user ? user.displayName.split(' ').map(n=>n[0]).join('').toUpperCase().slice(0,2) : '?';
-
-  const row = document.createElement('div');
-  row.className = `msg-row ${isSent ? 'sent' : ''} msg-appear`;
+  const row      = document.createElement('div');
+  row.className  = `msg-row ${isSent ? 'sent' : ''} msg-appear`;
 
   if (!isSent) {
     row.innerHTML = `
       <div class="msg-avatar-sm" style="background:${user?.avatarColor}">${initials}</div>
-      <div>
-        <div class="bubble received">${escHtml(msg.text)}</div>
-        <div class="msg-time-inline">${formatTime(msg.createdAt)}</div>
-      </div>`;
+      <div><div class="bubble received">${escHtml(msg.text)}</div>
+      <div class="msg-time-inline">${formatTime(msg.createdAt)}</div></div>`;
   } else {
     row.innerHTML = `
-      <div>
-        <div class="bubble sent">${escHtml(msg.text)}</div>
-        <div class="msg-time-inline">${formatTime(msg.createdAt)}</div>
-      </div>`;
+      <div><div class="bubble sent">${escHtml(msg.text)}</div>
+      <div class="msg-time-inline">${formatTime(msg.createdAt)}</div></div>`;
   }
   container.appendChild(row);
 }
@@ -705,7 +721,6 @@ async function sendMessage() {
   input.style.height = 'auto';
   wsSend('TYPING_STOP', { toId: activeUserId });
 
-  // Optimistic: add to local state immediately
   const tempMsg = { id: 'tmp_'+Date.now(), fromId: myUser.id, toId: activeUserId, text, createdAt: new Date().toISOString() };
   if (!conversations[activeUserId]) conversations[activeUserId] = [];
   conversations[activeUserId].push(tempMsg);
@@ -714,20 +729,16 @@ async function sendMessage() {
   if (container) appendMessageBubble(container, tempMsg, activeUserId);
   scrollBottom();
 
-  // Send via WebSocket (preferred)
   if (wsReady) {
     wsSend('SEND_MESSAGE', { toId: activeUserId, text });
   } else {
-    // Fallback to REST
-    try {
-      await apiFetch(`/users/${activeUserId}/messages`, 'POST', { text });
-    } catch(e) { console.error('send failed', e.message); }
+    try { await apiFetch(`/users/${activeUserId}/messages`, 'POST', { text }); }
+    catch(e) { console.error('send failed', e.message); }
   }
-
   renderUserList(getFilteredUsers());
 }
 
-/* ─── TYPING INDICATOR ──────────────────────────────────────────────────────── */
+/* ─── TYPING ─── */
 let typingDebounce = null;
 
 function onTyping() {
@@ -765,29 +776,26 @@ function hideTyping(fromId) {
   document.getElementById('typingIndicator')?.remove();
 }
 
-/* ─── PRESENCE ──────────────────────────────────────────────────────────────── */
+/* ─── PRESENCE ─── */
 function onPresenceChange(userId, online) {
   const user = nearbyUsers.find(u => u.id === userId);
-  if (user) {
-    user.online = online;
-    renderUserList(getFilteredUsers());
-  }
+  if (user) { user.online = online; renderUserList(getFilteredUsers()); }
   if (activeUserId === userId) {
     const statusEl = document.getElementById('chatStatus');
     if (statusEl) {
-      statusEl.textContent = online ? '● Online now' : '○ Away';
-      statusEl.style.color = online ? 'var(--online)' : 'var(--text-dim)';
+      statusEl.textContent  = online ? '● Online' : '○ Away';
+      statusEl.style.color  = online ? 'var(--online)' : 'var(--text-dim)';
     }
   }
 }
 
-/* ─── UTILS ─────────────────────────────────────────────────────────────────── */
+/* ─── UTILS ─── */
 async function apiFetch(path, method = 'GET', body = null, auth = true) {
   const headers = { 'Content-Type': 'application/json' };
   if (auth && token) headers['Authorization'] = `Bearer ${token}`;
   const opts = { method, headers };
   if (body) opts.body = JSON.stringify(body);
-  const r = await fetch(API + path, opts);
+  const r    = await fetch(API + path, opts);
   const data = await r.json();
   if (!r.ok) throw new Error(data.error || 'Request failed');
   return data;
@@ -795,8 +803,7 @@ async function apiFetch(path, method = 'GET', body = null, auth = true) {
 
 function formatTime(iso) {
   if (!iso) return '';
-  const d = new Date(iso);
-  return d.toLocaleTimeString('en-US', { hour:'numeric', minute:'2-digit', hour12:true });
+  return new Date(iso).toLocaleTimeString('en-US', { hour:'numeric', minute:'2-digit', hour12:true });
 }
 
 function escHtml(str) {
@@ -817,7 +824,7 @@ function autoResize(el) {
   el.style.height = Math.min(el.scrollHeight, 120) + 'px';
 }
 
-/* ─── AUTO-RESTORE SESSION ──────────────────────────────────────────────────── */
+/* ─── BOOT ─── */
 if (token) initApp();
 </script>
 </body>
