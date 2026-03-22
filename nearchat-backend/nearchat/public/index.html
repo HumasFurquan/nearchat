@@ -175,7 +175,7 @@ aside{
    ═══════════════════════════════════════════════════════════ */
 @media (max-width: 680px) {
   /* Header: hide online pill text to save space */
-  .online-pill span { display: none; }
+  .online-text { display: none; }
 
   /* Main becomes a relative container */
   main { position: relative; overflow: hidden; }
@@ -282,7 +282,7 @@ aside{
     <div class="ws-status" id="wsStatus" title="WebSocket"></div>
     <div class="online-pill">
       <div class="online-dot-hdr"></div>
-      <span id="onlineCount">— online</span>
+      <span id="onlineCount">—</span><span class="online-text"> online</span>
     </div>
     <div class="user-avatar-header" id="myAvatar" title="You">?</div>
   </div>
@@ -520,7 +520,7 @@ async function loadNearby() {
     const r = await apiFetch(`/users/nearby?scope=${currentScope}`);
     nearbyUsers = r.users;
     document.getElementById('peopleCount').textContent  = `${nearbyUsers.length} people`;
-    document.getElementById('onlineCount').textContent  = `${nearbyUsers.filter(u=>u.online).length} online`;
+    document.getElementById('onlineCount').textContent = nearbyUsers.filter(u=>u.online).length;
     renderUserList(getFilteredUsers());
   } catch(e) { console.error('loadNearby failed:', e.message); }
 }
